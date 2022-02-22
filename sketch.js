@@ -1,43 +1,38 @@
-let url = "https://api.polygon.io/v1/open-close/"
-let ticker = "AAPL"
-let yea = "/2021"
-let mo = "-06-"
-let da = "18"
-let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD"
+let url = "https://api.polygon.io/v1/open-close/";
+let ticker = "AAPL";
+let yea = "/2021";
+let mo = "-06-";
+let da = "18";
+let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD";
 let link;
-let dataChoice = close
+let dataChoice = close;
 function setup() {
-  createCanvas(400,400);
-  background(0,150,175)
-  textSize(55)
-  textAlign(CENTER,CENTER)
-  
-  
-  
+  createCanvas(1920, 1080);
+  background(236, 227, 252);
+  textSize(55);
+  textAlign(CENTER, CENTER);
 }
 
 function draw() {
-  text(`${ticker}`,width/2,height/2)
-  
-  
+  text(`${ticker}`, width / 2, height / 2);
+  noLoop()
 }
 
-function mousePressed(){
-  d = dist(mouseX,mouseY,200,200)
+function mousePressed() {
+  d = dist(mouseX, mouseY, 960, 540);
   if (d < 50) {
-    findStock()
-    
+    findStock();
   }
 }
 
 function findStock() {
-  loadJSON(url + ticker + yea + mo + da + url2, gotData)
+  loadJSON(url + ticker + yea + mo + da + url2, gotData);
 }
 
 function gotData(data) {
   console.log(data.high);
-  textAlign(CENTER,BOTTOM)
-  textSize(70)
-  let new_data = text(`${data.high}`,(width/2),(height/2)+100)
-  
+  textAlign(CENTER, BOTTOM);
+  textSize(70);
+  let new_data = text(`${data.high}`, width / 2, height / 2 + 100);
+  console.log("test")
 }
