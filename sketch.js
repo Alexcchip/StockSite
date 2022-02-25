@@ -7,6 +7,7 @@ let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD";
 let link;
 let set = false
 let input;
+
 function setup() {
   createCanvas(1920, 1080);
   background(236, 227, 252);
@@ -15,9 +16,6 @@ function setup() {
   inp.position((width / 2)-85, (height / 2)-150);
   inp.size(185);
   inp.changed(inpTicker);
-  textSize(25)
-  text(`Created by: Alexander Weinberger
- Contact: aw700m@bhsec.bard.edu`, width / 4, (height * .65));
   clearButton = createButton("Clear");
   clearButton.position((width / 2)+45, (height / 2)-100)
   clearButton.mousePressed(clearScr)
@@ -34,7 +32,6 @@ function setup() {
   dateinp.position((width / 2)-85, (height / 2)-200);
   dateinp.size(185);
   dateinp.changed(dateParser);
-  noLoop()
 }
 
 function dateParser() {
@@ -67,15 +64,10 @@ function clearScr(reason) {
     textSize(55)
     text(`${ticker}`, width / 2, height / 2);
     console.log("CSR 1")
-    textSize(25)
-    text(`Created by: Alexander Weinberger
- Contact: aw700m@bhsec.bard.edu`, width / 4, (height * .65));
-    textSize(70)
   }
   else {
     console.log("ELSE CLSR")
     setup()
-    textSize(70)
   }
 }
 
@@ -125,6 +117,6 @@ function gotDataLow(data) {
     set = true
     console.log("low set true")
   }
-  let new_data = text(`${data.low}`, width / 2, height / 2 + 100);
+  let new_data = text(`$${data.low}`, width / 2, height / 2 + 100);
   console.log("test")
 }
