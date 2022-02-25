@@ -6,19 +6,28 @@ html, body {
 h1 {
     padding: 50;
     margin: 50;
+    color: black;
 }
 canvas {
   display: block;
   
 }
 
+table, th, td {
+  border:1px solid black;
+  padding: 5px;
+  margin: 50px;
+}
+
+h1,h2,h3{
+  margin: 15px;
+}
 
 #p1 {
-  padding: 6px;
+  padding: 5px;
+  margin: 15px;
   height: 200px;
   text-align: left;
   font-size: large;
-  color:rgb(26, 135, 149);
-  
-
+  color:black;
 }
