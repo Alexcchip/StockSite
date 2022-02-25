@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
     <title>St0Ck Tracker</title>
+   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <style>
       h1 {text-align: center;
        background-color: rgb(236, 227, 252); 
@@ -15,12 +16,54 @@
   <body>
     <script src="sketch.js"></script>
     <h1> St0ck Tracker </h1>
-    <p id="p1"> <b> Notes: <br>
+    <h2><b> Notes: </b></h2>
+    <p id="p1">  <br>
    &emsp;- enter date first, then ticker <br>    
    &emsp;- can show data up to the previous market day <br>
    &emsp;- if no data is showing up <br>
        &emsp;&emsp;- reload <br>
        &emsp;&emsp;- don't spam the buttons (5 calls per minute) <br>
-   &emsp;- might not work for some OTC stocks</b></p>
+   &emsp;- might not work for some OTC stocks</p>
+    
+    <h3>NYSE: Closed/Short Market Days</h2>
+    <table>
+    <tr>
+       <th>Holiday</th>
+       <th>Date</th>
+     </tr>
+     <tr>
+       <td>Good Friday</td>
+       <td>Friday, April 15th</td>
+     </tr>
+     <tr>
+       <td>Memorial Day</td>
+       <td>Monday, May 30</td>
+     </tr>
+     <tr>
+       <td>Juneteenth National Independence Day</td>
+       <td>Monday, June 20</td>
+     </tr>
+     <tr>
+       <td>Independence Day</td>
+       <td>Monday, July 4</td>
+     </tr>
+     <tr>
+       <td>Labor Day</td>
+       <td>Monday, September 5</td>
+       
+     </tr>
+     <tr>
+       <td>Thanksgiving Day</td>
+       <td>Thursday, November 24</td>
+     </tr>
+     <tr>
+       <td>Christmas Day</td>
+       <td>Monday, December 26</td>
+     </tr>
+     <tr>
+       <td>Weekends</td>
+       <td>Every Saturday and Sunday</td>
+     </tr>
+   </table>
   </body>
 </html>
