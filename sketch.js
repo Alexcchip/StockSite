@@ -7,6 +7,7 @@ let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD";
 let link;
 let set = false
 let input;
+let new_data;
 
 function setup() {
   createCanvas(1920, 1080);
@@ -50,7 +51,7 @@ function inpTicker() {
   console.log(`${ticker} inp`)
   clearScr(1)
   textSize(55)
-  text(`${ticker}`, width / 2, height / 2);
+  text(`${ticker}`, width / 2, (height / 2)-300);
 }
 
 
@@ -62,7 +63,7 @@ function clearScr(reason) {
   if (reason == 1) {
     background(236, 227, 252)
     textSize(55)
-    text(`${ticker}`, width / 2, height / 2);
+    text(`${ticker}`, width / 2, (height / 2)-300);
     console.log("CSR 1")
   }
   else {
@@ -101,7 +102,7 @@ function gotDataHigh(data) {
     set = true
     console.log("high set true")
   }
-  let new_data = text(`$${data.high}`, width / 2, height / 2 + 100);
+  new_data = text(`$${data.high}`, width / 2, (height / 2)-200 );
   console.log(`${data.high} testing`)
 }
 
@@ -117,6 +118,6 @@ function gotDataLow(data) {
     set = true
     console.log("low set true")
   }
-  let new_data = text(`$${data.low}`, width / 2, height / 2 + 100);
+  new_data = text(`$${data.low}`, width / 2, (height / 2)-200);
   console.log("test")
-}
+} 
