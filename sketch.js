@@ -25,7 +25,7 @@ function setup() {
   highButton.mousePressed(high)
   //new close button
   closeButton = createButton("Close")
-  closeButton.position((width/2)-80, (height/2)-100)
+  closeButton.position((width/2)-110, (height/2)-100)
   closeButton.mousePressed(closeFunc)
   lowButton = createButton('Low')
   lowButton.position((width / 2)-43, (height / 2)-100)
