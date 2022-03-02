@@ -7,7 +7,10 @@ let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD";
 let link;
 let set = false
 let input;
-let new_data;
+let new_data_high;
+let new_data_low;
+let new_data_open;
+let new_data_close;
 
 function setup() {
   createCanvas(1920, 1080);
@@ -23,6 +26,10 @@ function setup() {
   highButton = createButton('High')
   highButton.position(width / 2, (height / 2)-100)
   highButton.mousePressed(high)
+  //new change button
+  changeButton = createButton("Change")
+  changeButton.position((width/2)-200,(height/2)-100)
+  changeButton.mousePressed()
   //new close button
   closeButton = createButton("Close")
   closeButton.position((width/2)-97, (height/2)-100)
@@ -43,6 +50,21 @@ function setup() {
   dateinp.changed(dateParser);
 }
 
+function changeFunc() {
+  findChange()
+}
+function findChange() {
+  findStockClose()
+  findStockOpen()
+  clearScr(1)
+  if (new_data_close > new_data_open) {
+    dayChange = new_data_open - new_data_close
+    text(`$${dayChange}`, width / 2, (height / 2)-200 );
+  }
+  else if (new_data_close < new_data_open) {
+    dayChange = new_data_open - new_data_close
+    text(`$-${dayChange}`, width / 2, (height / 2)-200 );
+}
 function openFunc() {
   findStockOpen()
 }
@@ -126,7 +148,7 @@ function gotDataClose(data) {
     set = true
     console.log("close set true")
   }
-  new_data = text(`$${data.close}`, width / 2, (height / 2)-200 );
+  new_data_close = text(`$${data.close}`, width / 2, (height / 2)-200 );
   console.log(`${data.close} testing`)
 }
 
@@ -143,7 +165,7 @@ function gotDataOpen(data) {
     set = true
     console.log("open set true")
   }
-  new_data = text(`$${data.open}`, width / 2, (height / 2)-200 );
+  new_data_open = text(`$${data.open}`, width / 2, (height / 2)-200 );
   console.log(`${data.open} testing`)
 }
 
@@ -160,7 +182,7 @@ function gotDataHigh(data) {
     set = true
     console.log("high set true")
   }
-  new_data = text(`$${data.high}`, width / 2, (height / 2)-200 );
+  new_data_high = text(`$${data.high}`, width / 2, (height / 2)-200 );
   console.log(`${data.high} testing`)
 }
 
@@ -176,6 +198,6 @@ function gotDataLow(data) {
     set = true
     console.log("low set true")
   }
-  new_data = text(`$${data.low}`, width / 2, (height / 2)-200);
+  new_data_low = text(`$${data.low}`, width / 2, (height / 2)-200);
   console.log("test")
 } 
