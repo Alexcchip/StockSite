@@ -30,7 +30,7 @@ function setup() {
   //new open function
   openButton = createButton("Open")
   openButton.position((width/2)-150,(height/2)-100)
-  openButton.mousePressed()
+  openButton.mousePressed(openFunc)
   lowButton = createButton('Low')
   lowButton.position((width / 2)-43, (height / 2)-100)
   lowButton.mousePressed(low)
