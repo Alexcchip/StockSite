@@ -23,6 +23,10 @@ function setup() {
   highButton = createButton('High')
   highButton.position(width / 2, (height / 2)-100)
   highButton.mousePressed(high)
+  //new close button
+  closeButton = createButton("Close")
+  closeButoon.position((width/2)-53, (height/2)-100)
+  closeButton.mousePressed(close)
   lowButton = createButton('Low')
   lowButton.position((width / 2)-43, (height / 2)-100)
   lowButton.mousePressed(low)
@@ -45,6 +49,10 @@ function dateParser() {
   da = str(dateArray[1])
   yea = str( "/" + str(dateArray[2]))
   console.log(mo,typeof(da),typeof(yea))
+}
+//new close function
+function close() {
+  findStockClose()
 }
 function inpTicker() {
   ticker = inp.value()
@@ -72,6 +80,11 @@ function clearScr(reason) {
   }
 }
 
+function findStockClose() {
+  console.log(mo,da,yea + "close test")
+  loadJSON(url + ticker + yea + mo + da + url2, gotDataClose);
+}
+
 function high() {
   findStockHigh();
 } 
@@ -88,6 +101,22 @@ function findStockHigh() {
 function findStockLow() {
   console.log(mo,da,yea +" lowww testttt")
   loadJSON(url + ticker + yea + mo + da + url2, gotDataLow);
+}
+
+function gotDataClose(data) {
+  console.log(mo,da,yea)
+  console.log(data.close);
+  textAlign(CENTER, BOTTOM);
+  textSize(70);
+  if (set == true) {
+    clearScr(1)  
+  }   
+  else {
+    set = true
+    console.log("close set true")
+  }
+  new_data = text(`$${data.close}`, width / 2, (height / 2)-200 );
+  console.log(`${data.close} testing`)
 }
 
 function gotDataHigh(data) {
