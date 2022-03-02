@@ -44,8 +44,7 @@ function setup() {
 }
 
 function openFunc() {
-  console.log(mo,da,yea + "open test")
-  loadJSON(url + ticker + yea + mo + da + url2, gotDataOpen);
+  findStockOpen()
 }
 function dateParser() {
   
@@ -70,6 +69,10 @@ function inpTicker() {
   text(`${ticker}`, width / 2, (height / 2)-300);
 }
 
+function findStockOpen() {
+  console.log(mo,da,yea + "open test")
+  loadJSON(url + ticker + yea + mo + da + url2, gotDataOpen);
+}
 
 function selectTicker() {
   console.log("BUtton was pressed",mo)
