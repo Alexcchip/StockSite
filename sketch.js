@@ -29,7 +29,7 @@ function setup() {
   //new change button
   changeButton = createButton("Change")
   changeButton.position((width/2)-200,(height/2)-100)
-  changeButton.mousePressed()
+  changeButton.mousePressed(changeFunc)
   //new close button
   closeButton = createButton("Close")
   closeButton.position((width/2)-97, (height/2)-100)
