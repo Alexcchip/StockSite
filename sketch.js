@@ -27,6 +27,10 @@ function setup() {
   closeButton = createButton("Close")
   closeButton.position((width/2)-97, (height/2)-100)
   closeButton.mousePressed(closeFunc)
+  //new open function
+  openButton = createButton("Open")
+  openButton.position((width/2)-150,(height/2)-100)
+  openButton.mousePressed()
   lowButton = createButton('Low')
   lowButton.position((width / 2)-43, (height / 2)-100)
   lowButton.mousePressed(low)
@@ -39,6 +43,10 @@ function setup() {
   dateinp.changed(dateParser);
 }
 
+function openFunc() {
+  console.log(mo,da,yea + "open test")
+  loadJSON(url + ticker + yea + mo + da + url2, gotDataOpen);
+}
 function dateParser() {
   
   date = str(dateinp.value());
@@ -118,6 +126,24 @@ function gotDataClose(data) {
   new_data = text(`$${data.close}`, width / 2, (height / 2)-200 );
   console.log(`${data.close} testing`)
 }
+
+
+function gotDataOpen(data) {
+  console.log(mo,da,yea)
+  console.log(data.open);
+  textAlign(CENTER, BOTTOM);
+  textSize(70);
+  if (set == true) {
+    clearScr(1)  
+  }   
+  else {
+    set = true
+    console.log("open set true")
+  }
+  new_data = text(`$${data.open}`, width / 2, (height / 2)-200 );
+  console.log(`${data.open} testing`)
+}
+
 
 function gotDataHigh(data) {
   console.log(mo,da,yea)
