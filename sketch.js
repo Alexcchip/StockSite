@@ -26,7 +26,7 @@ function setup() {
   //new close button
   closeButton = createButton("Close")
   closeButoon.position((width/2)-53, (height/2)-100)
-  closeButton.mousePressed(close)
+  closeButton.mousePressed(closeFunc)
   lowButton = createButton('Low')
   lowButton.position((width / 2)-43, (height / 2)-100)
   lowButton.mousePressed(low)
@@ -51,7 +51,7 @@ function dateParser() {
   console.log(mo,typeof(da),typeof(yea))
 }
 //new close function
-function close() {
+function closeFunc() {
   findStockClose()
 }
 function inpTicker() {
