@@ -7,10 +7,7 @@ let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD";
 let link;
 let set = false
 let input;
-let new_data_high;
-let new_data_low;
-let new_data_open;
-let new_data_close;
+let new_data;
 
 function setup() {
   createCanvas(1920, 1080);
@@ -26,10 +23,6 @@ function setup() {
   highButton = createButton('High')
   highButton.position(width / 2, (height / 2)-100)
   highButton.mousePressed(high)
-  //new change button
-  changeButton = createButton("Change")
-  changeButton.position((width/2)-200,(height/2)-100)
-  changeButton.mousePressed(changeFunc)
   //new close button
   closeButton = createButton("Close")
   closeButton.position((width/2)-97, (height/2)-100)
@@ -38,6 +31,9 @@ function setup() {
   openButton = createButton("Open")
   openButton.position((width/2)-150,(height/2)-100)
   openButton.mousePressed(openFunc)
+  changeButton = createButton("Change")
+  changeButton.position((width/2)-215,(height/2)-100)
+  changeButton.mousePressed(changeFunc)
   lowButton = createButton('Low')
   lowButton.position((width / 2)-43, (height / 2)-100)
   lowButton.mousePressed(low)
@@ -51,22 +47,30 @@ function setup() {
 }
 
 function changeFunc() {
-  findChange()
+  loadJSON(url + ticker + yea + mo + da + url2, gotDataChange);
+  console.log("changeFunc was ran")
 }
-function findChange() {
-  findStockClose()
-  findStockOpen()
-  clearScr(1)
-  if (new_data_close > new_data_open) {
-    dayChange = new_data_open - new_data_close
-    text(`$${dayChange}`, width / 2, (height / 2)-200 );
+
+function gotDataChange(data) {
+  change = ((data.close) - (data.open))
+  change = change.toFixed(2)
+  console.log(change)
+  textAlign(CENTER, BOTTOM);
+  textSize(70);
+  if (set == true) {
+    clearScr(1)  
+  }   
+  else {
+    set = true
+    console.log("change set true")
   }
-  else if (new_data_close < new_data_open) {
-    dayChange = new_data_open - new_data_close
-    text(`$-${dayChange}`, width / 2, (height / 2)-200 );
+  new_data = text(`$${change}`, width / 2, (height / 2)-200 );
+  console.log(`$${change} testing`)
 }
+
 function openFunc() {
-  findStockOpen()
+  console.log(mo,da,yea + "open test")
+  loadJSON(url + ticker + yea + mo + da + url2, gotDataOpen);
 }
 function dateParser() {
   
@@ -91,10 +95,6 @@ function inpTicker() {
   text(`${ticker}`, width / 2, (height / 2)-300);
 }
 
-function findStockOpen() {
-  console.log(mo,da,yea + "open test")
-  loadJSON(url + ticker + yea + mo + da + url2, gotDataOpen);
-}
 
 function selectTicker() {
   console.log("BUtton was pressed",mo)
@@ -148,7 +148,7 @@ function gotDataClose(data) {
     set = true
     console.log("close set true")
   }
-  new_data_close = text(`$${data.close}`, width / 2, (height / 2)-200 );
+  new_data = text(`$${data.close}`, width / 2, (height / 2)-200 );
   console.log(`${data.close} testing`)
 }
 
@@ -165,7 +165,7 @@ function gotDataOpen(data) {
     set = true
     console.log("open set true")
   }
-  new_data_open = text(`$${data.open}`, width / 2, (height / 2)-200 );
+  new_data = text(`$${data.open}`, width / 2, (height / 2)-200 );
   console.log(`${data.open} testing`)
 }
 
@@ -182,7 +182,7 @@ function gotDataHigh(data) {
     set = true
     console.log("high set true")
   }
-  new_data_high = text(`$${data.high}`, width / 2, (height / 2)-200 );
+  new_data = text(`$${data.high}`, width / 2, (height / 2)-200 );
   console.log(`${data.high} testing`)
 }
 
@@ -198,6 +198,6 @@ function gotDataLow(data) {
     set = true
     console.log("low set true")
   }
-  new_data_low = text(`$${data.low}`, width / 2, (height / 2)-200);
+  new_data = text(`$${data.low}`, width / 2, (height / 2)-200);
   console.log("test")
 } 
