@@ -1,6 +1,7 @@
 let url = "https://api.polygon.io/v1/open-close/";
 let ticker;
 let yea;
+let marketStatusUrl = "https://api.polygon.io/v1/marketstatus/now?apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD"
 let mo;
 let da;
 let url2 = "?adjusted=true&apiKey=KVV51cHIUAc27CoerjSUKsaQX6o6IIxD";
@@ -44,6 +45,27 @@ function setup() {
   dateinp.position((width / 2)-85, (height / 2)-200);
   dateinp.size(185);
   dateinp.changed(dateParser);
+  statusButton = createButton("Market Status")
+  statusButton.position((width/2)-215,(height/2)-75)
+  statusButton.mousePressed(statusFunc)
+}
+
+function statusFunc() {
+   loadJSON(marketStatusUrl, gotMarketStatus);
+}
+
+function gotMarketStatus(data) {
+  textAlign(CENTER, BOTTOM);
+  textSize(70);
+  if (set == true) {
+    clearScr(1)  
+  }   
+  else {
+    set = true
+    console.log("status set true")
+  }
+  new_data = text(`${data.market}`, width / 2, (height / 2)-200 );
+  console.log(`${data.market} testing`)
 }
 
 function changeFunc() {
